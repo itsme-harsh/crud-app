@@ -31,23 +31,23 @@ app.use("/api/v1/users", userRouter)
 
 const isProduction = process.env.NODE_ENV == "production";
 
-app.use((err, req, res, next) => {
-    console.log(isProduction)
-    if (isProduction) {
-        console.error(err.stack);
-        res.status(err.statusCode || 500).json({
-            success: false,
-            message: err.message
-        });
-    } else {
-        res.status(err.statusCode || 500).json({
-            success: false,
-            message: err.message,
-            stack: err.stack,
-            errors: err.errrors
-        });
-    }
-});
+// app.use((err, req, res, next) => {
+//     console.log(isProduction)
+//     if (isProduction) {
+//         console.error(err.stack);
+//         res.status(err.statusCode || 500).json({
+//             success: false,
+//             message: err.message
+//         });     
+//     } else {
+//         res.status(err.statusCode || 500).json({
+//             success: false,
+//             message: err.message,
+//             stack: err.stack,
+//             errors: err.errrors
+//         });
+//     }
+// });
 
 
 connectDB()
